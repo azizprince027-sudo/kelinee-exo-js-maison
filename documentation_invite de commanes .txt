@@ -1,0 +1,830 @@
+NB tldr pout git bash avoir des info en fr  sur une  commandes 
+
+Points clés
+Commandes de fichiers essentielles :
+copy, del, rename, move, xcopy: Copie, déplace, renomme ou supprime des fichiers et des répertoires.
+robocopy: Copie et synchronisation renforcée des dossiers.
+attrib, cipher, fc, type, copy con, replace: Gère les attributs des fichiers, le chiffrement, les comparaisons et la création de fichiers.
+Navigation dans les répertoires :
+cd, dir, mkdir, rmdir, tree, pushd, popd, path, title: Déplacez-vous entre les dossiers, listez-en le contenu, créez/supprimez des répertoires et gérez les raccourcis de navigation.
+Tâches de réseau :
+ipconfig, ping, tracert, netstat, nslookup, netsh, arp -a, hostname, pathping, getmac, nbtstat, shutdown /i: Diagnostiquez et configurez les paramètres et les connexions du réseau.
+net use, net user, telnet, ftp: Gérez les ressources du réseau, les comptes d’utilisateurs et les connexions à distance.
+Info système et processus :
+systeminfo, winver, tasklist, taskkill, wmic, set, ver, whoami: Affichez les détails du système d’exploitation, visualisez/terminez les processus en cours, gérez les variables d’environnement et vérifiez les utilisateurs connectés.
+Gestion des disques :
+diskpart, list disk, select disk, clean, format, chkdsk, label, vol: Partitionnez, vérifiez, étiquetez et formatez les lecteurs.
+Sécurité et Propriété :
+takeown, icacls, cacls, runas, net user, cipher: Gérez la propriété des fichiers, les autorisations, le chiffrement et les comptes d’utilisateurs.
+Accéder à CMD :
+Recherchez « cmd » et exécutez en tant qu’administrateur pour les privilèges élevés sous Windows 7, 8, 10 ou 11.
+L’invite de commande (CMD) de Windows est l’un des outils les plus puissants du système d’exploitation Windows, mais de nombreux utilisateurs ne font qu’effleurer ses possibilités. Qu’importe votre degré d’expertise, une bonne compréhension des commandes CMD peut considérablement améliorer votre flux de travail.
+
+Dans ce guide, nous avons compilé plus de 70 commandes CMD pour Windows, avec leur syntaxe, des exemples concrets et des conseils d’utilisation. Nous aborderons tous les sujets, de la gestion des fichiers au dépannage du réseau, en passant par les opérations sur les disques et l’automatisation.
+
+Le système d'automatisation informatique de NinjaOne
+Gagnez du temps en automatisant les tâches répétitives. Automatisez l'exécution des commandes Windows CMD sur plusieurs terminaux avec NinjaOne
+
+En savoir plus
+Plus de 70 commandes CMD utiles pour Windows
+15 commandes CMD dans Windows pour la gestion de fichiers
+Ce premier groupe de commandes admin CMD dans Windows simplifie la copie, la suppression et la gestion des fichiers et des répertoires, rationalisant ainsi vos opérations quotidiennes et améliorant votre flux de travail.
+
+Commande :	Description :
+copy	Copie un ou plusieurs fichiers vers un autre emplacement
+del	Supprime un ou plusieurs fichiers
+rename (ren)	Renomme un fichier
+move	Déplace ou renomme un fichier
+xcopy	Copie des fichiers et des répertoires, y compris les arborescences et les fichiers cachés/système
+find	Recherche une chaîne de texte dans un ou plusieurs fichiers
+robocopy	Outil renforcé de synchronisation des répertoires, idéal pour les sauvegardes
+subst	Mappe un dossier local comme lettre de lecteur
+attrib	Modifie les attributs d’un fichier ou d’un répertoire
+cipher	Chiffre ou déchiffre les fichiers et les dossiers
+fc	Compare deux fichiers ligne par ligne
+type	Affiche le contenu d’un fichier texte
+copy con	Crée un nouveau fichier directement à partir de la ligne de commande
+replace	Remplace un ou plusieurs fichiers par des fichiers provenant d’un autre emplacement
+edit (if installed)	Ouvre un éditeur de texte simple dans l’invite de commande
+copy
+Copie un ou plusieurs fichiers vers un autre emplacement.
+Syntaxe :
+copy [source] [destination]
+
+Exemple :
+copy report.docx D:\Backup\
+
+del
+Supprime un ou plusieurs fichiers.
+Syntaxe :
+del [nomdufichier]
+
+Exemple :
+del vieuxfichier.txt
+
+rename (ou ren)
+Renomme un fichier.
+Syntaxe :
+rename [anciennom] [nouveaunom]
+
+Exemple :
+rename fichier.txt nouveaufichier.txt
+
+move
+Déplace un fichier vers un nouvel emplacement ou le renomme
+Syntaxe :
+move [source] [destination]
+
+Exemple :
+move budget.xlsx D:\Rapports\
+
+xcopy
+Copie les fichiers et les répertoires, y compris les arborescences de répertoires et les fichiers système/cachés, en utilisant éventuellement divers paramètres pour un meilleur contrôle.
+Syntaxe :
+xcopy [source] [destination] /E /H /C /I
+
+Exemple :
+xcopy C:\Projets D:\Sauvegarde /E /H /C /I
+
+find
+Recherche une chaîne de texte dans un ou plusieurs fichiers, ce qui permet d’effectuer des tâches simples de filtrage de texte.
+Syntaxe :
+find « texte » [nomdufichier]
+
+Exemple :
+find « erreur » log.txt
+
+robocopy
+Outil robuste de synchronisation des répertoires, idéal pour les sauvegardes.
+Syntaxe :
+robocopy [source] [destination] [options]
+
+Exemple :
+robocopy C:\Données D:\Sauvegarde /MIR
+
+subst
+Mappe un dossier local en tant que lettre de lecteur.
+Syntaxe :
+subst [lecteur:] [chemin]
+
+Exemple :
+subst X: C:\Projets
+
+attrib
+Modifie les attributs d’un fichier ou d’un répertoire. Vous pouvez également utiliser cette commande CMD dans Windows 11: attrib -h -s -r C:pathtofolder pour afficher les fichiers cachés.
+Syntaxe :
+attrib [+attribut | -attribut] [nomdufichier]
+
+Exemple :
+attrib -h -s -r C:\path\to\file.txt
+
+Tarifs du logiciel de gestion des terminaux n°1
+Payez au mois ou à l'année grâce à des contrats flexibles.
+
+Recevoir un devis
+cipher
+Chiffre ou déchiffre les fichiers et les dossiers.
+Syntaxe :
+cipher /E [chemin]
+
+Exemple :
+cipher /E C:\Sensible
+
+fc
+Compare deux fichiers ligne par ligne
+Syntaxe :
+fc [fichier1] [fichier2]
+
+Exemple :
+fc vieille_config.txt nouvelle_config.txt
+
+type
+Affiche le contenu d’un fichier texte.
+Syntaxe :
+type [nomdufichier]
+
+Exemple :
+type readme.txt
+
+copy con
+Crée un nouveau fichier directement à partir de la ligne de commande.
+Syntaxe :
+copy con [nomdufichier] Saisissez le contenu, puis appuyez sur Ctrl + Z et Entrée pour enregistrer.
+
+Exemple :
+copy con notes.txt
+
+Replace
+Remplace un ou plusieurs fichiers par des fichiers provenant d’un autre emplacement.
+Syntaxe :
+replace [source] [destination] [/A] [/P] [/R]
+
+Exemple :
+replace brouillon.docx D:\Projets\
+
+edit (if installed)
+Ouvre un simple éditeur de texte dans l’invite de commande.
+Syntaxe :
+edit [nomdufichier]
+
+Exemple :
+edit config.txt
+
+10 commandes CMD dans Windows pour la navigation et la gestion des répertoires
+Naviguez dans les répertoires et gérez efficacement les structures de dossiers à l’aide de ces commandes CMD utiles.
+
+Commande :	Description :
+cd	Change le répertoire actuel
+cd /	Ouvre le répertoire racine
+dir	Affiche une liste de fichiers et de sous-répertoires
+mkdir (md)	Crée un nouveau répertoire
+rmdir (rd)	Supprime un répertoire
+tree	Affiche la structure du dossier de façon visuelle
+pushd	Sauvegarde le répertoire actuel et passe à un autre
+popd	Retourne au répertoire stocké par pushd
+path	Affiche ou définit le chemin de recherche des fichiers exécutables
+title	Définit le titre de la fenêtre de l’Invite de commande
+cd
+Change votre répertoire actuel.
+Syntaxe :
+cd [chemin]
+
+Exemple :
+cd C:\Utilisateurs\Marie\Documents
+
+cd /
+Ouvre le répertoire racine.
+Syntaxe :
+cd /
+
+Exemple :
+cd /
+
+dir
+Affiche la liste des fichiers et des sous-répertoires d’un répertoire.
+Syntaxe :
+dir
+
+Exemple :
+dir /p
+
+mkdir (ou md)
+Crée un nouveau répertoire.
+Syntaxe :
+mkdir [nomdurépertoire]
+
+Exemple :
+mkdir Rapports
+
+rmdir (ou rd)
+Supprime un répertoire.
+Syntaxe :
+rmdir [nomdurépertoire]
+
+Exemple :
+rmdir VieuxFichiers
+
+L'informatique intelligente commence ici
+Abonnez-vous à la newsletter hebdomadaire de NinjaOne et rejoignez une communauté florissante de passionnés d'informatique qui automatisent ensemble les aspects les plus difficiles de l'informatique.
+
+S'abonner
+tree
+Affiche de manière visuelle la structure des dossiers d’un lecteur ou d’un chemin d’accès.
+Syntaxe :
+tree [lecteur:][chemin] [/F]
+
+Exemple :
+tree C:\Projets /F
+
+pushd
+Enregistre le répertoire actuel et passe à un autre.
+Syntaxe :
+pushd [chemin]
+
+Exemple :
+pushd D:\Travail
+
+popd
+Retourne au répertoire enregistré par la dernière commande pushd.
+Syntaxe :
+popd
+
+Exemple :
+popd
+
+path
+Affiche ou définit le chemin de recherche des fichiers exécutables.
+Syntaxe :
+path [nomduchemin]
+
+Exemple :
+path C:\Windows\System32
+
+title
+Définit le titre de la fenêtre de l’Invite de commande.
+Syntaxe :
+title [string]
+
+Exemple :
+title Console d’administration
+
+15 Commandes CMD dans Windows pour la configuration et le diagnostic du réseau
+Les commandes de configuration du réseau sont utiles lors du dépannage ou de la mise en place de nouvelles connexions réseau.
+
+Commande :	Description :
+ipconfig	Affiche la configuration actuelle du réseau TCP/IP
+ping	Teste la connectivité du réseau à un hôte
+tracert	Trace le chemin emprunté par les paquets jusqu’à un hôte du réseau
+netstat	Affiche les connexions actives et les ports d’écoute
+nslookup	Interroge le DNS pour résoudre les noms de domaine et les adresses IP
+netsh	Configure les paramètres du réseau
+arp -a	Affiche le tableau ARP
+hostname	Affiche le nom du réseau de l’ordinateur
+pathping	Combine ping et tracert pour obtenir des informations détaillées sur le réseau
+getmac	Affiche l’adresse MAC
+nbtstat	Diagnostique NetBIOS sur TCP/IP
+shutdown /i	Outil d’arrêt à distance
+net use	Mappe des lecteurs réseau
+net user	Gère les comptes d’utilisateurs locaux
+telnet	Se connecte à des serveurs distants (si installés)
+ipconfig
+Affiche toutes les valeurs actuelles de configuration du réseau TCP/IP et actualise les paramètres DHCP (Dynamic Host Configuration Protocol) et DNS (Domain Name System). D’autres commandes ipconfig sont disponibles ici.
+Syntaxe :
+ipconfig
+
+Exemple :
+ipconfig /tout
+
+ping
+Teste la capacité à atteindre un périphérique réseau spécifique.
+Syntaxe :
+ping [nomdhôte ou IP]
+
+Exemple :
+ping google.com
+
+tracert
+Trace le chemin emprunté par un paquet pour atteindre un hôte du réseau, ce qui permet d’identifier les problèmes survenant dans le réseau.
+Syntaxe :
+tracert [nomdhôte ou IP]
+
+Exemple :
+tracert 8.8.8.8
+
+netstat
+Affiche les connexions actives, les ports, les statistiques Ethernet et la table de routage IP.
+Syntaxe :
+netstat
+
+Exemple :
+netstat -ano
+
+nslookup
+Interroge le DNS pour obtenir la correspondance entre le nom de domaine et l’adresse IP.
+Syntaxe :
+nslookup [nomdhôte]
+
+Exemple :
+nslookup openai.com
+
+netsh
+Permet de configurer presque tous les aspects des paramètres du réseau.
+Syntaxe :
+netsh [contexte] [commande]
+
+Exemple :
+netsh interface ip afficher config
+
+arp -a
+Affiche les entrées ARP actuelles en interrogeant les données de protocole actuelles. Indique l’adresse IP et l’adresse MAC correspondante.
+Syntaxe :
+arp -a
+
+Exemple :
+arp -a
+
+hostname
+Affiche le nom de réseau de l’ordinateur, ce qui facilite l’identification et le dépannage du réseau.
+Syntaxe :
+hostname
+
+Exemple :
+hostname
+
+pathping
+Combine les fonctionnalités de ping et de tracert, en fournissant des informations plus détaillées sur les itinéraires et la latence du réseau.
+Syntaxe :
+pathping [nomdhôte ou IP]
+
+Exemple :
+pathping google.com
+
+
+How to View Google Chrome Download History in Windows
+En savoir plus
+getmac
+Affiche l’adresse MAC de la carte réseau.
+Syntaxe :
+getmac
+
+Exemple :
+getmac /v
+
+nbtstat
+Permet de diagnostiquer les connexions NetBIOS sur TCP/IP et d’afficher les statistiques du protocole.
+Syntaxe :
+nbtstat [options]
+
+Exemple :
+nbtstat -n
+
+shutdown /i
+Outil d’arrêt à distance pour la gestion du réseau.
+Syntaxe :
+shutdown /i
+
+Exemple :
+shutdown /i
+
+net use
+Se connecte à des ressources partagées, les supprime ou les affiche.
+Syntaxe :
+net use [lecteur:] \\ordinateur\partage
+
+Exemple :
+net use Z: \\Serveur\Partage
+
+net user
+Gère les comptes d’utilisateurs locaux.
+Syntaxe :
+net user [nomutilisateur] [motdepasse] /add
+
+Exemple :
+net user utilisateurtest Pass123 /add
+
+telnet
+Se connecte à un hôte distant en utilisant le protocole Telnet (si installé).
+Syntaxe :
+telnet [nomdhôte ou IP] [port]
+
+Exemple :
+telnet mail.exemple.com 25
+
+8 commandes CMD dans Windows pour les informations système
+La collecte d’informations complètes sur le système est essentielle pour le dépannage en mode sans échec, la surveillance du système et l’assurance que votre configuration Windows fonctionne de manière optimale.
+
+Commande :	Description :
+systeminfo	Affiche la configuration et les spécifications détaillées du système
+winver	Affiche la version de Windows et le numéro de construction
+tasklist	Liste tous les processus en cours
+taskkill	Termine les processus par le PID ou le nom de l’image
+wmic	Accède aux informations de gestion avancée du système
+set	Affiche ou définit les variables d’environnement
+ver	Affiche la version actuelle de Windows
+whoami	Affiche l’utilisateur actuellement connecté
+systeminfo
+Fournit une vue d’ensemble détaillée de votre système, y compris la configuration du système d’exploitation, les détails du matériel et les informations sur le réseau.
+Syntaxe :
+systeminfo
+
+Exemple :
+systeminfo
+
+winver
+Vérifie rapidement la version de Windows que vous utilisez.
+Syntaxe :
+winver
+
+Exemple :
+winver
+
+tasklist
+Liste tous les processus en cours d’exécution avec leur ID de processus (PID).
+Syntaxe :
+tasklist
+
+Exemple :
+tasklist /v
+
+💡 Affiche les détails du processus en mode verbeux.
+
+taskkill /PID [numéro_pid] /F
+Termine de force les processus qui ne répondent pas ou qui consomment trop de ressources. Remplacez [pid_number] par le PID réel de votre liste de tâches.
+Syntaxe :
+taskkill /PID [numéro_pid] /F
+
+Exemple :
+taskkill /PID 1234 /F
+
+wmic
+Affiche les informations de Windows Management Instrumentation (WMI), ce qui permet une gestion plus avancée du système grâce à diverses sous-classes (par exemple, wmic product get name, wmic cpu get name).
+Syntaxe :
+wmic [alias] get [propriété]
+
+Exemple :
+wmic cpu get nom
+
+set
+Affiche ou définit les variables d’environnement.
+Syntaxe :
+set [variable=[valeur]]
+
+Exemple :
+set CHEMIN
+
+ver
+Affiche la version de Windows sous forme de texte.
+Syntaxe :
+ver
+
+Exemple :
+ver
+
+whoami
+Affiche le nom d’utilisateur actuellement connecté.
+Syntaxe :
+whoami
+
+Exemple :
+whoami
+
+Démarrez un essai gratuit du logiciel de gestion des terminaux n°1 sur G2
+Pas de carte de crédit requise, accès complet à toutes les fonctionnalités.
+
+Essayer NinjaOne gratuitement
+8 commandes CMD dans Windows pour la gestion des disques
+Les commandes de gestion de disque vous permettent de gérer vos ressources de stockage directement à partir de la ligne de commande, offrant ainsi une alternative puissante aux outils de l’interface utilisateur graphique.
+
+Commande :	Description :
+diskpart	Ouvre l’utilitaire Disk Partition
+list disk	Liste tous les disques connectés à l’ordinateur
+select disk	Sélectionne un disque à gérer
+clean	Supprime toutes les partitions du disque sélectionné
+format	Formate un disque avec un système de fichiers spécifié
+chkdsk	Vérifie la présence d’erreurs sur un disque et les répare
+label	Modifie ou crée une étiquette de volume
+vol	Affiche l’étiquette du volume et le numéro de série
+diskpart
+Un outil de gestion des partitions de disque.
+Syntaxe :
+diskpart
+
+Exemple :
+diskpart
+
+list disk
+Affiche tous les disques connectés à l’ordinateur.
+Syntaxe :
+list disk
+
+Exemple :
+list disk
+
+select disk
+Sélectionne le disque sur lequel vous souhaitez effectuer des opérations.
+Syntaxe :
+select disk [numéro]
+
+Exemple :
+select disk 1
+
+clean
+Supprime toutes les partitions et les données du disque sélectionné.
+Syntaxe :
+clean
+
+Exemple :
+clean
+
+format
+Formate un disque avec un système de fichiers spécifié.
+Syntaxe :
+format [lecteur:] /FS:[système de fichiers]
+
+Exemple :
+format D: /FS:NTFS
+
+chkdsk
+Vérifie que le disque ne contient pas d’erreurs et répare le système de fichiers.
+Syntaxe :
+chkdsk [lecteur:] [paramètres]
+
+Exemple :
+chkdsk C: /f
+
+label
+Modifie ou crée l’étiquette de volume d’un disque.
+Syntaxe :
+label [lecteur:] [étiquette]
+
+Exemple :
+label E: LecteurdeSauvegarde
+
+vol
+Affiche l’étiquette du volume et le numéro de série d’un disque.
+Syntaxe :
+vol [lecteur:]
+
+Exemple :
+vol C:
+
+NinjaOne assure la sécurité de vos systèmes et de vos terminaux grâce à une gestion des correctifs automatisée et à des scripts CMD personnalisés.
+
+Essayez-le gratuitement dès maintenant !
+
+6 commandes CMD dans Windows pour la sécurité et la propriété
+Ces commandes vous aident à gérer la propriété des fichiers/dossiers, les autorisations, le chiffrement et le contrôle d’accès directement à partir de l’Invite de commande, ce qui les rend précieuses pour les administrateurs système et les professionnels de l’informatique.
+
+Commande :	Description :
+takeown	S’approprie la propriété d’un fichier ou d’un dossier
+icacls	Affiche ou modifie les permissions des fichiers/dossiers
+cacls	Ancienne commande pour afficher ou modifier les autorisations
+runas	Exécute un programme en tant qu’autre utilisateur
+net user	Gestion des comptes d’utilisateurs et des mots de passe
+cipher	Chiffre ou déchiffre les fichiers et les dossiers
+takeown
+S’approprie la propriété d’un fichier ou d’un dossier.
+Syntaxe :
+takeown /F [chemin] [/R] [/D Y]
+
+Exemple :
+takeown /F C:\FichierSécurisé /R /D Y
+
+Cela déclenche l’appropriation de FichierSécurisé et de tous les sous-dossiers/fichiers.
+
+icalcs
+Affiche ou modifie les listes de contrôle d’accès (ACL) pour les fichiers et les répertoires.
+Syntaxe :
+icacls [nomdufichier] [/grant Utilisateur:Autorisation]
+
+Exemple :
+icacls C:\FichierSécurisé /grant Marie:F
+
+L’utilisateur « Marie » se voit ainsi accorder un accès complet (F) à FichierSécurisé.
+
+calcs
+Affiche ou modifie les autorisations d’accès aux fichiers (ancienne commande, toujours disponible).
+Syntaxe :
+cacls [nom de fichier] [/G Utilisateur:Autorisation]
+
+Exemple :
+rapport cacls.doc /G Marie:F
+
+Cela permet à l’utilisateur « Marie » d’avoir un accès complet à report.doc
+
+runas
+Exécute un programme en tant qu’autre utilisateur.
+Syntaxe :
+runas /user :[domaine\]username program
+
+Exemple :
+runas /user:Admin cmd
+
+Cela ouvre une invite de commande en tant qu’utilisateur Admin.
+
+net user
+Gère les comptes utilisateurs, y compris les changements de mot de passe.
+Syntaxe :
+net user [nomutilisateur] [nouveaumotdepasse]
+
+Exemple :
+net user Marie SecurePass123
+
+Cette opération modifie le mot de passe de l’utilisateur « Marie ».
+
+cipher
+Chiffre ou déchiffre les fichiers et les dossiers à l’aide du système de chiffrement des fichiers (EFS).
+Syntaxe :
+cipher /E [chemin]
+
+Exemple :
+cipher /E C:\Sensible
+
+Cette opération chiffre tous les fichiers du dossier « Sensible ».
+
+4 Astuces avancées pour l’invite de commande
+En plus de la liste des commandes CMD pour Windows, des astuces avancées de l’Invite de commande peuvent améliorer considérablement votre productivité, automatiser des tâches et gérer plus efficacement les opérations du système. Ces astuces impliquent souvent une combinaison de commandes, de scripts et de fonctionnalités système qui vont au-delà des entrées de ligne de commande de base.
+
+Voici quelques astuces avancées et les raisons pour lesquelles elles sont bénéfiques :
+
+1. Scripts batch
+Les fichiers batch permettent d’automatiser les tâches répétitives. En écrivant un script qui contient une série de commandes, vous pouvez exécuter ces commandes de manière séquentielle sans saisie manuelle à chaque fois, ce qui permet de gagner du temps et de réduire les erreurs.
+
+Pourquoi c’est utile :
+
+Idéal pour les tâches d’entretien de routine.
+Peut être programmé pour s’exécuter automatiquement avec le planificateur de tâches de Windows.
+Réduit le risque de fautes de frappe ou d’erreurs humaines dans les travaux répétitifs.
+Syntaxe :
+@echo off
+commande1
+commande2
+pause
+
+Exemple : Créez un fichier backup.bat pour copier les documents importants.
+
+@echo off
+xcopy C:\Travail D:\Sauvegardes E /H /C /I
+echo Backup completed successfully!
+pause
+
+💡 Remarque : Que signifie @echo off ?
+
+Vous vous demandez peut-être ce que signifie @echo off et pourquoi vous devez commencer vos commandes par cette expression.
+
+echo off indique à l’invite de commande de ne pas afficher chaque commande avant de l’exécuter, ce qui permet de conserver une sortie propre.
+@ cache la ligne echo off elle-même, de sorte que vous ne la voyez pas dans la console.
+Utilisez toujours @echo off au début de vos scripts batch pour un aspect plus propre.
+2. Piping et redirection
+Les opérateurs pipe (|) et redirection (>, >>) permettent d’enchaîner des commandes ou de diriger leur sortie vers des fichiers ou d’autres programmes. Par exemple, vous pouvez diriger la sortie d’une commande dir vers findstr pour rechercher des fichiers spécifiques ou rediriger la sortie d’une commande pour créer un fichier texte.
+
+Pourquoi c’est utile :
+
+Le piping vous permet de filtrer, de transformer ou de passer la sortie d’une commande directement dans une autre.
+La redirection vous permet d’enregistrer les résultats des commandes en vue d’un examen ultérieur, d’une journalisation ou d’une automatisation.
+Syntaxe :
+
+Piping
+commande1 | commande2
+Redirection vers un fichier (écrasement)
+commande > nomfichier.txt
+Redirection vers un fichier (append)
+commande >> nomfichier.txt
+Exemple :
+
+Recherche de « rapport » dans une liste d’annuaires
+dir | find « report »
+Enregistrer une liste de processus dans un fichier
+tasklist > processes.txt
+Ajouter des messages d’erreur à un journal existant
+ping 8.8.8.8 >> networklog.txt
+💡 À noter : Différence entre > et >>
+
+> écrasera le fichier s’il existe.
+>> ajoutera au fichier, en préservant son contenu.
+3. Variables d’environnement
+La compréhension et l’utilisation des variables d’environnement peuvent vous aider à accéder rapidement aux chemins d’accès au système et aux paramètres utilisateur et à modifier le comportement des commandes. Par exemple, l’utilisation de %USERPROFILE% pour accéder au répertoire personnel de l’utilisateur actuel simplifie la navigation et les tâches de gestion des fichiers.
+
+Pourquoi c’est utile :
+
+Permet aux scripts de s’adapter à différents systèmes et utilisateurs sans coder en dur les chemins d’accès.
+Accélère la navigation vers les endroits les plus utilisés.
+Syntaxe :
+%VARIABLE_NAME%
+
+Variables d’environnement communes :
+
+%USERPROFILE% : Répertoire personnel de l’utilisateur actuel.
+%TEMP% : Dossier des fichiers temporaires.
+%PATH% : Répertoires dans lesquels les exécutables sont recherchés.
+%HOMEDRIVE% : La lettre du lecteur associée à votre répertoire personnel.
+Exemple :
+
+Aller dans le dossier Documents de l’utilisateur
+cd %USERPROFILE%\Documents
+Ouvrir le répertoire des fichiers temporaires
+cd %TEMP%
+💡 À noter : Afficher toutes les variables d’environnement :
+
+Exécutez la commande set. Cette fonction affiche toutes les variables d’environnement actuellement définies dans votre système.
+
+4. Utilisation de caractères génériques (wildcards)
+Les caractères génériques (* et ?) peuvent rendre les commandes de gestion de fichiers telles que copier, déplacer et supprimer plus puissantes en vous permettant de spécifier des patterns qui correspondent à plusieurs fichiers, ce qui est utile pour les opérations par lots sur les fichiers.
+
+Pourquoi c’est utile :
+
+Ciblez rapidement plusieurs fichiers sans avoir à taper chaque nom.
+Idéal pour le nettoyage en masse, le renommage ou l’organisation de fichiers.
+Syntaxe :
+
+Astérisque (*) : Correspond à zéro ou plusieurs caractères.
+Point d’interrogation ( ?) : Correspond à un seul caractère.
+Exemple :
+
+Supprimer tous les fichiers .tmp dans le dossier actuel
+del *.tmp
+Copier tous les fichiers commençant par « rapport » dans un autre dossier
+copy rapport* D:\Rapports\
+Renommer tous les fichiers .txt en .bak
+ren *.txt *.bak
+💡 À noter : Utilisez ces commandes avec prudence. Les caractères génériques ne demandent pas de confirmation par défaut, de sorte qu’une commande telle que del *.docx supprimera instantanément tous les documents Word du répertoire. Utilisez /p avec del pour demander un message avant chaque suppression, de sorte que la commande ressemblera à ceci : del *.docx /p
+
+6 autres services pratiques : Commandes CMD pour Windows
+Ces commandes CMD supplémentaires ne s’intègrent pas parfaitement dans les autres catégories, mais sont extrêmement utiles pour l’administration quotidienne, l’écriture de scripts et le dépannage.
+
+Commande :	Description :
+call	Exécute un fichier batch à partir d’un autre et reprend le contrôle une fois terminé
+start	Ouvre une nouvelle fenêtre CMD ou lance un programme
+pause	Interrompt l’exécution du lot jusqu’à ce qu’une touche soit pressée
+echo	Affiche les messages ou bascule l’affichage des commandes
+cls	Efface l’écran de l’Invite de commande
+exit	Ferme la fenêtre de l’invite de commande
+call
+Exécute un autre fichier batch ou programme à partir du fichier batch en cours, en renvoyant le contrôle au fichier original après complétion.
+Syntaxe :
+call [nomdufichier]
+
+Exemple :
+call backup.bat
+
+Cette opération exécute le fichier backup.bat puis retourne au script appelant.
+
+start
+Démarre un programme, ouvre un document ou lance une nouvelle fenêtre de l’Invite de commande.
+Syntaxe :
+start [programme or nomdufichier]
+
+Exemple :
+start blocnotes.exe
+
+Cette opération ouvre le Bloc-notes.
+
+pause
+Interrompt l’exécution du fichier batch et attend que l’utilisateur appuie sur une touche. Utile pour lire la sortie avant que la fenêtre ne se ferme.
+Syntaxe :
+pause
+
+Exemple :
+pause
+
+Le message suivant s’affiche : « Appuyez sur n’importe quelle touche pour continuer… »
+
+echo
+Affiche les messages dans l’invite de commande ou active/désactive l’écho des commandes.
+Syntaxe :
+echo [message]
+
+Exemple :
+echo Hello, world!
+
+Le message suivant s’affiche : « Hello, World! »
+
+cls
+Efface l’écran de l’Invite de commande, en supprimant tout le texte précédent.
+Syntaxe :
+cls
+
+Exemple :
+cls
+
+exit
+Ferme la session de l’Invite de commande en cours.
+Syntaxe :
+exit
+
+Exemple :
+exit
+
+Comment accéder à l’invite de commande de Windows
+Pour utiliser les commandes Windows CMD dans Windows 10 ou toute autre version, vous devez d’abord savoir comment accéder à l’invite de commande Windows. Les étapes peuvent varier légèrement en fonction de votre version de Windows.
+
+Pour Windows 8, 8.1, 10 et 11
+Procédez comme suit pour l’accès standard :
+
+Cliquez sur la barre des tâches.
+Entrez « cmd » dans le champ de recherche.
+Sélectionnez « Invite de commande »
+Pour obtenir des privilèges élevés, procédez comme suit pour accéder à l’Invite de commande en tant qu’administrateur :
+
+Faites un clic droit sur « Invite de commande » dans les résultats de la recherche.
+Sélectionnez « Exécuter en tant qu’administrateur »
