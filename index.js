@@ -210,7 +210,7 @@
 //     chaussures: "Des mocassins",                                             | 
 //     montre: "Montre connectée"                                               |
 // };                                                                           |
-// const { habits, chaussures, montre } = colis;                                |                                                                              // |
+// const { habits, chaussures, montre } = colis;                                |                                                                     
 // // Maintenant, les variables existent toutes seules !                        |
 // console.log(habits);      // "Un complet Basin"                              |
 // console.log(chaussures);   // "Des mocassins"                                |
@@ -218,15 +218,29 @@
 //===============================================================================
 
 // EXO :
+//=====================================================================================
+// const commande = {
+//     id: "CMD-992",
+//     client: "Aïcha",
+//     total: 12500,
+//     livre: false
+// };
 
-const commande = {
-    id: "CMD-992",
-    client: "Aïcha",
-    total: 12500,
-    livre: false
-};
+// const {client , total} = commande;
 
-const {client , total} = commande;
+// console.log( "Mme " + client + " a une  facture de " + total + " Frcfa");
 
-console.log( "Mme " + client + " a une  facture de " + total + " Frcfa");
+//===============================================================================
+// 'Atelier Pratique : Le Gestionnaire de Rendez-vous "Omni Soin".                                                                             |
+//Tu vas coder la logique de la page d'accueil d'Omni Soin                                                                              |
+// qui permet de filtrer les médecins                                                             | 
+// disponibles à Abidjan et de calculer le coût total des consultations                                                                             |
+//                                                                              |
+//                                                                              |                                                                     
+//                                                                              |
+//                                                                              |
+//                                                                              |
+//                                                                              |
+//===============================================================================
+
 
