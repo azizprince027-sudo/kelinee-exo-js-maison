@@ -244,3 +244,200 @@
 //===============================================================================
 
 
+//les setL'utilisation la plus fréquente du Set dans la vraie vie d'un développeur, c'est pour nettoyer un tableau des doublons en une seule ligne.
+
+// Imaginons que dans Omni Soin, tu récupères la liste de toutes les communes des médecins disponibles, et que tu veuilles créer un menu déroulant pour que l'utilisateur choisisse sa commune. Tu ne veux pas afficher "Cocody" dix fois dans ta liste !
+
+//=============================================================================
+
+// const communesMedecins = ["Cocody", "Yopougon", "Cocody", "Marcory", "Yopougon"];
+
+// // 1. On transforme le tableau en Set pour éliminer les doublons
+// const communesUniquesSet = new Set(communesMedecins); // {"Cocody", "Yopougon", "Marcory"}
+
+// // 2. On re-transforme le Set en vrai tableau pour pouvoir le manipuler facilement
+// const listePropre = [...communesUniquesSet]; 
+
+// console.log(listePropre); // ["Cocody", "Yopougon", "Marcory"] -> Propre, sans doublon !
+
+//========================================================================================
+
+// const communesSira = ["Cocody", "Yopougon", "Cocody", "Marcory", "Yopougon", "Bingerville"];
+
+// // 1. Crée le Set PUR (sans crochets autour)
+// const communesUniques = new Set(communesSira);
+
+// // 2. Transforme ce Set en Tableau en mettant les crochets et le ... ICI
+// const listeFinale = [...communesUniques];
+
+// console.log(listeFinale);
+
+//============================================================================================================
+
+// le splitt il sert a decouper exemples 
+
+
+// const nomComplet = "Odjo Aziz Prince";
+
+// // On lui dit : "Coupe le texte à chaque fois que tu trouves un espace ' '"
+// const morceaux = nomComplet.split(" ");
+
+// console.log(morceaux); 
+// // Résultat : ["Odjo", "Aziz", "Prince"] (Un beau tableau tout propre)
+
+//=========================================================================================================================
+//------------------------------------------------------------------------------------------------------------------------------
+// le join  ()  Coller un tableau pour en faire du texte
+// //////////////////////////////////////////////////////////////////////////////////////////////////////
+// C'est l'exact inverse de .split(). .join() prend tous les éléments d'un tableau et les rassemble pour
+// former une seule chaîne de caractères (du texte). Tu choisis le connecteur qui va lier les morceaux.
+// //========================================================================================================
+
+// Traduction : "Join" signifie "joindre" ou "unir".
+
+// Le cas d'usage réel : Tu as une liste d'équipements pour un diagnostic auto et tu veux l'afficher proprement séparée par des virgules dans un paragraphe.
+
+// const outils = ["Scanner", "Clé à choc", "Cric"];
+
+// // On rassemble avec une virgule et un espace
+// const texteOutils = outils.join(", ");
+
+// console.log(texteOutils); 
+// Résultat : "Scanner, Clé à choc, Cric"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// le . concat ()  fusionner deux tableaux (ou chaînes)
+//----------------------------------------------------------
+// .concat() permet d'assembler deux ou plusieurs tableaux pour en créer un nouveau, sans modifier les tableaux d'origine.
+
+// traduction : "Concat" est le diminutif de "concaténer" (boutonner ensemble).
+//Le cas d'usage réel : Tu as une liste de médicaments en stock à la pharmacie de Yopougon, et une
+//autre pour la pharmacie de Cocody. Tu veux fusionner les deux pour ton application Omni Soin.
+
+// const stockYopougon = ["Paracétamol", "Ibuprofène"];
+// const stockCocody = ["Vitamine C", "Amoxicilline"];
+
+// const stockGlobal = stockYopougon.concat(stockCocody);
+
+// console.log(stockGlobal);
+// Résultat : ["Paracétamol", "Ibuprofène", "Vitamine C", "Amoxicilline"]
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// exo Un utilisateur a rempli un formulaire sur ton site de manière un peu désordonnée. Il a écrit la liste de ses voitures préférées dans une seule chaîne, séparée par des tirets : "G-Wagon-Infinix-Toyota".
+
+// Voici ton défi :
+
+// Déclare la chaîne : const saisie = "G-Wagon-Infinix-Toyota";
+
+// Utilise .split() pour transformer cette chaîne en un tableau nommé listeVoitures (coupe au niveau des tirets "-").
+
+// Ajoute une nouvelle voiture au tableau avec .push("Range-Rover");
+
+// Utilise .join() pour transformer ce tableau mis à jour en une chaîne de caractères propre, où les voitures sont séparées par un espace et une flèche : " -> ". Stoque le résultat dans affichageFinal.
+
+// Fais un console.log(affichageFinal);
+//====================================================================================================
+
+
+// const saisie = "G-Wagon-Infinix-Toyota";
+// const listeVoiture = saisie.split("-");
+// listeVoiture.push("Range-Rover");
+// const affichageFinal =  listeVoiture.join(" -> " )
+// console.log(affichageFinal);
+//==================================================================================
+
+// le reverse()
+//-------------
+
+// Cas d'usage réel : Afficher les messages ou les annonces du plus récent au plus ancien
+// Dans ton projet SIRA (Immobilier) ou Omni Soin, ta base de données te renvoie souvent les éléments dans l'ordre de leur création (du plus vieux au plus récent). Mais sur ton site, tu veux que l'utilisateur voie les dernières annonces publiées tout en haut de la page.
+
+// Pour inverser l'ordre sans détruire ton tableau d'origine, l'astuce de pro consiste à faire une copie du tableau avec le Spread Operator ([...]) avant de lancer le .reverse() :
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+// const annoncesChronologiques = ["Annonce Ancienne (Matin)", "Annonce Récente (Midi)", "Annonce Dernière Minute (Soir)"];
+
+// // On copie ET on inverse en une seule ligne sans toucher à l'original
+// const annoncesAffichees = [...annoncesChronologiques].reverse();
+
+// console.log(annoncesAffichees);
+// // Résultat : ["Annonce Dernière Minute (Soir)", "Annonce Récente (Midi)", "Annonce Ancienne (Matin)"]
+
+// console.log(annoncesChronologiques);
+// // Résultat : Inchangé ! L'ordre initial est préservé.
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+//===============================================================================
+
+// const reparations = ["Changement Pneu", "Vidange Huile", "Réparation Freins"];
+// const historiqueReparation = [...reparations].reverse();
+// console.log(historiqueReparation);
+
+//===================================================================
+
+//  le Spread Operator (L'Opérateur de Décomposition);
+//----------------------------------------------------
+
+// Son rôle est de sortir tous les éléments d'un tableau (ou toutes les propriétés d'un objet) pour les étaler un par un, comme si tu vidais un sac de billes sur le sol.
+
+//=======================================================================
+
+// Cas d'usage n°1 : Faire une copie parfaite d'un tableau
+//=========================================================================
+// const original = ["A", "B", "C"];
+//  On prend les billes de original et on les pose dans un nouveau tableau
+// const copie = [...original];
+//============================================================================
+
+//  Cas d'usage n°2 : Fusionner deux tableaux proprement
+//------------------------------------------------------
+
+// const avantMidi = ["Fana", "Koffi"];
+// const apresMidi = ["Amadou", "Sita"];
+
+// // On déballe les deux tableaux dans un troisième
+// const touteLaJournee = [...avantMidi, ...apresMidi];
+// console.log(touteLaJournee); // ["Fana", "Koffi", "Amadou", "Sita"]
+
+//===================================================================================
+
+//le rest parameter
+//-----------------
+
+// on l'utilise exclusivement dans les paramètres d'une fonction (entre les parenthèses). Il dit à la fonction : "Prends tous les arguments restants que l'utilisateur a envoyés, et range-les ensemble dans un seul tableau".
+
+//==============================================================================================================================================================
+
+//Exemple concret :
+// Imaginons que sur ton projet, tu veuilles créer une fonction qui calcule le coût total de n'importe quel nombre de réparations auto, que le client en fasse 2, 5 ou 10.
+//------------------------------------------------------------------------------------------------
+
+// Les ... ici signifient : "Rassemble tous les tarifs reçus dans un tableau nommé tarifs"
+// function calculerTotal(...tarifs) {
+//     // 'tarifs' est maintenant un vrai tableau [15000, 25000, 10000]
+//     return tarifs.reduce((acc, actuel) => acc + actuel, 0);
+// }
+
+// // On peut lui envoyer autant de chiffres qu'on veut !
+// const facture1 = calculerTotal(15000, 25000, 10000); 
+// console.log(facture1); // 50000
+
+//========================================================================================================================================================================
+
+// La règle d'or du Rest Parameter :
+// Il doit toujours être le tout dernier paramètre de la fonction (le "reste").
+//-------------------------------------------------------------------------------------------
+
+// CORRECT : Le premier argument va dans 'nom', tout le RESTE va dans 'notes'
+// function attribuerNotes(nom, ...notes) { ... }
+
+// // ERREUR FATALE (JavaScript va planter) : Le reste ne peut pas être au début
+// function attribuerNotes(...notes, nom) { ... }
+//=========================================================================================
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// NB : on utilises le spread operator sur les tableaux et objet
+//    : on utilises le rest parametor  sur les fonctions(DANS LES PARAMERE)
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
