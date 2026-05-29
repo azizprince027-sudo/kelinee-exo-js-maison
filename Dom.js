@@ -67,5 +67,50 @@
 //                                            evenements
 
 //============================================================================================================
+// onclick// ils sont deconseillé
+///////////////////////////////////////////////////////////////////////////////////////
+// les ecouteursvia les proprieté javascripts (les ecouteurs on)
+//---------------------------
 
-                                        // onclick//
+// location.href"" sert a rediriger vers le sites q uon veut ;
+//////////////////////////////////////
+
+// le confirme dans la structure  if sert a  faire apparaitre une boite de dialogue
+
+//===================================================================================================
+
+// const a = document.querySelector("a");
+// const button = document.querySelector("button");
+
+// a.onclick = ()=>{
+//     if (confirm("etes vous sur?")) {
+//         location.href="https://www.youtube.com/watch?v=OUYLoHZn0uA&list=RDhwPCE_maWmk&index=4"
+//     }
+// }
+
+// button.onmouseover = ()=>{
+//     document.body.style.backgroundColor="orange"
+// }
+
+// button.onmouseout = ()=>{
+//     document.body.style.backgroundColor="white"
+// }
+
+//================================================================================================================================================================
+
+//    Les écouteurs via le gestionnaire d'évènements ( il permetres de supprimer aussi un evenements)
+  //  ----------------------------------------------
+
+  // les add evenlister, 
+
+  //=========================================================================================================================
+
+// const a = document.querySelector("a");
+// const button = document.querySelector("button");
+ 
+// button.addEventListener("click",()=>{
+// mouseover = document.body.style.backgroundColor="red";
+// mouseout = document.body.style.backgroundColor= "black"
+// });
+
+
